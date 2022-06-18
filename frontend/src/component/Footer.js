@@ -7,10 +7,9 @@ const useStyles = makeStyles({
     color: "white",
     backgroundColor: '#000000' ,
     width: "100%",
-    height:"20%",
-    position: "absolute",
+    height:"100px",
     bottom: 0,
-    padding: 8
+    padding: 8,
   },  
   link: {
     textDecoration: "none",
@@ -53,11 +52,6 @@ const Footer = () => {
             <Link to="/" className = {classes.link}>
                Terms Of Service
             </Link>
-
-            
-        
-            
-            
   </div>
     )}
     </div>
