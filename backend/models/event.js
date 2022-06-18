@@ -37,8 +37,7 @@ const eventSchema = new mongoose.Schema({
     },
     theme:{
       type: String,
-      enum:['Sports','Tech','Art','Music','Food','Literature','Other'],
-      required: [true, 'Theme is required']
+      enum:['Sports','Tech','Art','Music','Food','Literature','Other']
     },
     mode:{
         type: String,

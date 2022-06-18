@@ -6,13 +6,13 @@ const getEvents = async (req, res) => {
 }
 
 const addEvent = asyncHandler(async(req,res) => {
-    const {title, description, date, time, location, totalAttendees, price,mode} = req.body
+    const {title, description, date, time, location, totalAttendees, price,mode ,theme,image} = req.body
     const eventExist = await Event.findOne({title})
     if(eventExist){
         res.status(400)
         throw new Error('Event already exist')
     }
-    const event = await Event.create({title, description, date, time, location, totalAttendees, price,mode})
+    const event = await Event.create({title, description, date, time, location, totalAttendees, price,mode,theme,image})
 
     if(event){
         res.status(201).json({
@@ -24,7 +24,9 @@ const addEvent = asyncHandler(async(req,res) => {
             mode: event.mode,
             location: event.location,
             totalAttendees: event.totalAttendees,
-            price: event.price
+            price: event.price,
+            theme: event.theme,
+            image: event.image
         })
     } else{
         res.status(400)
