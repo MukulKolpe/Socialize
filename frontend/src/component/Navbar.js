@@ -1,4 +1,4 @@
-import React from "react";
+import {React,useEffect} from "react";
 import {
   AppBar,
   Toolbar,
@@ -46,6 +46,25 @@ function Navbar() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const { isAuthenticated, user } = useAuth0();
+  const collectData = async() => {
+    let name = user.name;
+    let email = user.email;
+    let image = user.picture;
+    let result = await fetch("http://localhost:5000/users/addUser",{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,email,image
+      })
+    })
+
+    result = await result.json();
+    console.log(result);
+  }
+
+collectData();
 
   return (
     <AppBar position="static" style={{ background: "#000000" }}>
