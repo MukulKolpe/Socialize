@@ -5,6 +5,11 @@ const getEvents = async (req, res) => {
   res.status(200).json(await Event.find())
 }
 
+const indivisualEvent = async (req,res) => {
+    let filterData = await Event.findOne({_id:req.params.id})
+    res.status(200).send(filterData)
+}
+
 const filterMode = async (req,res) => {
     let filterData = await Event.find({mode:req.query.mode})
     res.status(200).send(filterData)
@@ -44,4 +49,4 @@ const addEvent = asyncHandler(async(req,res) => {
     }
 })
 
-module.exports = {getEvents,addEvent ,filterMode ,filtertheme};
+module.exports = {getEvents,addEvent ,filterMode ,filtertheme , indivisualEvent};
