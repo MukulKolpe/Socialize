@@ -1,4 +1,5 @@
 require('dotenv').config();
+var cors = require('cors');
 const express = require('express');
 const app = express();
 
@@ -16,6 +17,7 @@ const userRoute = require('./routes/user')
 
 const port = process.env.PORT || 5000
 app.use(express.json());
+app.use(cors())
 app.use('/api', eventRoute)
 app.use('/users', userRoute)
 app.use(notFoundMiddleware)
