@@ -7,9 +7,15 @@ import {
   makeStyles,
   useTheme,
   useMediaQuery,
+  Button,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import DrawerComponent from "./Drawer";
+import Modal from "react-modal";
+
+import { useAuth0 } from "@auth0/auth0-react";
+import LogoutButton from "./LogoutButton";
+import LoginButton from "./LoginButton/LoginButton";
 
 const useStyles = makeStyles((theme) => ({
   navlinks: {
@@ -38,32 +44,58 @@ function Navbar() {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const { isAuthenticated, user } = useAuth0();
 
   return (
-    <AppBar position="static" style={{ background: '#000000' }}>
+    <AppBar position="static" style={{ background: "#000000" }}>
       <CssBaseline />
       <Toolbar>
-        <Typography variant="h4" className={classes.logo} 
-        style={{fontFamily: "Raleway, Arial", fontWeight: "bold"}}>
+        <Typography
+          variant="h4"
+          className={classes.logo}
+          style={{ fontFamily: "Raleway, Arial", fontWeight: "bold" }}
+        >
           Socialize
-          
         </Typography>
         {isMobile ? (
           <DrawerComponent />
         ) : (
           <div className={classes.navlinks}>
-            <Link to="/" className={classes.link}>
-              Home
-            </Link>
-            <Link to="/login" className={classes.link}>
-              Login
-            </Link>
-            <Link to="/signup" className={classes.link}>
-              Signup
-            </Link>
-            <Link to="/event" className={classes.link}>
-              Organise an event
-            </Link>
+            {!isAuthenticated ? (
+              <div>
+                <Link to="/" className={classes.link}>
+                  Home
+                </Link>
+                <LoginButton />
+              </div>
+            ) : (
+              <div>
+                <Link to="/" className={classes.link}>
+                  Home
+                </Link>
+                <Link to="/event" className={classes.link}>
+                  Organise an event
+                </Link>
+                <LogoutButton />
+
+                <img
+                  style={{
+                    borderRadius: "50px",
+                    boxSizing: "border-box",
+                    height: "40px",
+                    width: "40px",
+                    overflow: "hidden",
+                    marginLeft: "25px",
+                    verticalAlign: "middle",
+                    cursor: "pointer",
+                  }}
+                  alt={user.name}
+                  src={user.picture}
+                />
+
+                {console.log(user.picture)}
+              </div>
+            )}
           </div>
         )}
       </Toolbar>
