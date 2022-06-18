@@ -27,7 +27,7 @@ const eventSchema = new mongoose.Schema({
         required: [true, 'Location is required'],
     },
     createdBy: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: [mongoose.Schema.Types.ObjectId],
         ref: 'User',
         required: false
     },
