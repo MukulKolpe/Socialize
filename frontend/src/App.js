@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./component/Navbar";
 import Home from "./pages/home";
-import Login from "./pages/login";
-import Signup from "./pages/signup";
-import Event from "./pages/event";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Event from "./pages/Event";
 import Footer from "./component/Footer";
 function App() {
   return (
