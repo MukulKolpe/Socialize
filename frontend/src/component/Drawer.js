@@ -30,31 +30,31 @@ const classes = useStyles();
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
       >
-        <List>
+        <List style={{ background: '#000000' }}>
          <ListItem onClick={() => setOpenDrawer(false)}>
-            <ListItemText>
-              <Link to="/">Home</Link>
+            <ListItemText style={{textDecoration:"none"}}>
+              <Link to="/" style={{textDecoration:"none",color:"white"}}>Home</Link>
             </ListItemText>
           </ListItem>
           <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
-              <Link to="/about">About</Link>
+              <Link to="/login" style={{textDecoration:"none",color:"white"}}>Login</Link>
             </ListItemText>
           </ListItem>
           <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
-              <Link to="/contact">Contact</Link>
+              <Link to="/signup" style={{textDecoration:"none",color:"white"}}>Signup</Link>
             </ListItemText>
           </ListItem>
           <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
-              <Link to="/about">Faq</Link>
+              <Link to="/event" style={{textDecoration:"none",color:"white"}}>Organise an event</Link>
             </ListItemText>
           </ListItem>
         </List>
       </Drawer>
       <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
-        <MenuIcon />
+        <MenuIcon style={{color:"white"}}/>
       </IconButton>
     </>
   );
