@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react'
 import { makeStyles, Link,useTheme,useMediaQuery} from "@material-ui/core";
-import DrawerComponentFooter from "./DrawerFooter";
 
 const useStyles = makeStyles({
   footer: {
+    display: "flex",
+    flexDirection: "column",
     color: "white",
     backgroundColor: '#000000' ,
     width: "100%",
     height:"20%",
-    position: "absolute",
     bottom: 0,
     padding: 8
   },  
@@ -16,7 +16,6 @@ const useStyles = makeStyles({
     textDecoration: "none",
     color: "white",
     fontSize: "100%",
-    marginLeft: "10%",
     fontFamily: "Raleway, Arial", bottom: 0,
     "&:hover": {
     borderBottom: "1px solid white",
@@ -24,17 +23,10 @@ const useStyles = makeStyles({
     }}
     
 });
-
-const Footer = () => {
+const DrawerFooter = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <div>
-    {isMobile ? (
-      <DrawerComponentFooter />
-    ) : (
-      <div className={classes.footer}>
+    <div className={classes.footer}>
             <Link to="/" className = {classes.link}>
               Contact Us
             </Link>
@@ -59,11 +51,7 @@ const Footer = () => {
             
             
   </div>
-    )}
-    </div>
-    
-  
-  );
-};
+  )
+}
 
-export default Footer;
+export default DrawerFooter
