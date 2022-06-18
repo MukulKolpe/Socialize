@@ -5,6 +5,15 @@ const getEvents = async (req, res) => {
   res.status(200).json(await Event.find())
 }
 
+const filterMode = async (req,res) => {
+    let filterData = await Event.find({mode:req.query.mode})
+    res.status(200).send(filterData)
+}
+
+const filtertheme = async (req,res) => {
+    let filterData = await Event.find({theme:req.query.theme})
+    res.status(200).send(filterData)
+}
 const addEvent = asyncHandler(async(req,res) => {
     const {title, description, date, time, location, totalAttendees, price,mode ,theme,image ,createdBy} = req.body
     const eventExist = await Event.findOne({title})
@@ -35,4 +44,4 @@ const addEvent = asyncHandler(async(req,res) => {
     }
 })
 
-module.exports = {getEvents,addEvent};
+module.exports = {getEvents,addEvent ,filterMode ,filtertheme};
