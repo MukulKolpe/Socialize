@@ -5,7 +5,7 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import Event from "./pages/event";
-
+import Footer from "./component/Footer";
 function App() {
   return (
     <Router>
@@ -16,7 +16,10 @@ function App() {
         <Route path="/signup" component={Signup} />
         <Route path="/event" component={Event} />
       </Routes>
+      
+    <Footer />
     </Router>
+    
   );
 }
 export default App;
