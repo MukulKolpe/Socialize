@@ -31,6 +31,10 @@ const eventSchema = new mongoose.Schema({
         ref: 'User',
         required: false
     },
+    image:{
+        type: String,
+        required: false
+    },
     mode:{
         type: String,
         required: [true, 'Mode is required'],
