@@ -12,10 +12,12 @@ const connectDB = require('./db/connect')
 
 //routes
 const eventRoute = require('./routes/event')
+const userRoute = require('./routes/user')
 
 const port = process.env.PORT || 5000
 app.use(express.json());
 app.use('/api', eventRoute)
+app.use('/users', userRoute)
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 const start = async () => {
