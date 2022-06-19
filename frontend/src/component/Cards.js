@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import { useNavigate } from 'react-router-dom';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
@@ -13,6 +14,9 @@ import {
   CardMedia,
   Button
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -42,6 +46,7 @@ const useStyles = makeStyles(theme => ({
 
 const Cards = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
 
   return (
     <Container component="section" maxWidth="lg" className={classes.root}>
@@ -75,7 +80,7 @@ const Cards = () => {
             </Typography>
             <Typography className={classes.featureList}>
               The world is a book and those who do not travel read only one page.
-            </Typography>
+            </Typography> <Button color="primary" variant="contained" style={{marginBottom:"1rem"}} onClick={() => navigate('/inPersonEvent') }>View Events</Button>
           </div>
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -92,6 +97,8 @@ const Cards = () => {
             <Typography className={classes.featureList}>
               The Most Important Things are the connections you make with others.
             </Typography>
+
+            <Button color="primary" variant="contained" style={{marginBottom:"1rem"}} onClick={() => navigate('/onlineEvent') }>View Events</Button>
           </div>
         </Grid>
       </Grid>
