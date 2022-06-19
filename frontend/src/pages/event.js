@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import MultiStepForm from "../component/MultiStepForm/MultiStepForm";
 
 const event = () => {
   return (
-    <div>event</div>
-  )
-}
+    <div>
+      <MultiStepForm />
+    </div>
+  );
+};
 
-export default event
+export default event;

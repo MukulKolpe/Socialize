@@ -1,4 +1,4 @@
-import {React,useEffect} from "react";
+import { React, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -25,12 +25,16 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     flexGrow: "1",
     cursor: "pointer",
+    color: "white",
+    fontFamily: "Raleway, Arial",
+    alignContent: "left",
+    justifyContent: "left",
   },
   link: {
     textDecoration: "none",
     color: "white",
     fontSize: "18px",
-  
+
     fontFamily: "Raleway, Arial",
     marginLeft: theme.spacing(5),
     "&:hover": {
@@ -46,25 +50,27 @@ function Navbar() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const { isAuthenticated, user } = useAuth0();
-  const collectData = async() => {
+  const collectData = async () => {
     let name = user.name;
     let email = user.email;
     let image = user.picture;
-    let result = await fetch("http://localhost:5000/users/addUser",{
+    let result = await fetch("http://localhost:5000/users/addUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name,email,image
-      })
-    })
+        name,
+        email,
+        image,
+      }),
+    });
 
     result = await result.json();
     console.log(result);
-  }
+  };
 
-collectData();
+  collectData();
 
   return (
     <AppBar position="static" style={{ background: "#000000" }}>
